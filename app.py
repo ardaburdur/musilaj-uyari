@@ -8,11 +8,19 @@ st.markdown("---")
 st.write("### Welcome to the Project Dashboard")
 st.write("""
 This system is developed as an Electrical-Electronics Engineering graduation project. 
-It consists of two main modules accessible from the sidebar menu on the left:
+Click the buttons below to directly access the monitoring and analysis modules:
 """)
 
-st.info("**👈 1. Autonomous Radar:** Real-time environmental monitoring and risk assessment using NASA/NOAA data and thermodynamic modeling.")
-st.success("**👈 2. SAR Pollution Analysis:** AI-driven visual detection of surface pollutants (Mucilage & Oil spills) using Synthetic Aperture Radar imagery.")
+st.write("") # Boşluk bırak
+
+# --- TIKLANABİLİR DEV BUTONLAR (PAGE LINKS) ---
+# Not: pages klasöründeki dosyalarının adları tam olarak buradaki gibi olmalı!
+try:
+    st.page_link("pages/1_Autonomous_Radar.py", label="🚀 START: Autonomous Radar (Live Monitoring)", icon="📡")
+    st.write("")
+    st.page_link("pages/2_SAR_Pollution_Analysis.py", label="🛰️ START: SAR Pollution Analysis (AI Vision)", icon="🔍")
+except Exception as e:
+    st.error("⚠️ Sistem Hatası: 'pages' klasörü veya içindeki dosyalar bulunamadı. Lütfen GitHub'daki klasör ve dosya isimlerini kontrol edin.")
 
 st.markdown("---")
-st.caption("Please select a module from the sidebar to begin the analysis.")
+st.caption("Developed for EEE Graduation Project | Real-Time Dashboard")
