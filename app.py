@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 st.set_page_config(page_title="Marmara Sea Early Warning System", page_icon="⚓", layout="centered")
 
@@ -13,14 +14,26 @@ Click the buttons below to directly access the monitoring and analysis modules:
 
 st.write("") # Boşluk bırak
 
-# --- TIKLANABİLİR DEV BUTONLAR (PAGE LINKS) ---
-# Not: pages klasöründeki dosyalarının adları tam olarak buradaki gibi olmalı!
+# --- TIKLANABİLİR YÖNLENDİRME BUTONLARI (PAGE LINKS) ---
+# pages klasöründeki dosyalarınızın adları tam olarak buradaki gibi olmalı!
+page1_path = "pages/1_Autonomous_Radar.py"
+page2_path = "pages/2_SAR_Pollution_Analysis.py"
+
 try:
-    st.page_link("pages/1_Autonomous_Radar.py", label="🚀 START: Autonomous Radar (Live Monitoring)", icon="📡")
+    if os.path.exists(page1_path):
+        st.page_link(page1_path, label="🚀 START: Autonomous Radar (Live Monitoring)", icon="📡")
+    else:
+        st.error(f"⚠️ Dosya Bulunamadı: '{page1_path}' dosyası pages klasöründe yok. Lütfen GitHub'daki isimleri kontrol edin.")
+
     st.write("")
-    st.page_link("pages/2_SAR_Pollution_Analysis.py", label="🛰️ START: SAR Pollution Analysis (AI Vision)", icon="🔍")
+    
+    if os.path.exists(page2_path):
+        st.page_link(page2_path, label="🛰️ START: SAR Pollution Analysis (AI Vision)", icon="🔍")
+    else:
+        st.error(f"⚠️ Dosya Bulunamadı: '{page2_path}' dosyası pages klasöründe yok. Lütfen GitHub'daki isimleri kontrol edin.")
+        
 except Exception as e:
-    st.error("⚠️ Sistem Hatası: 'pages' klasörü veya içindeki dosyalar bulunamadı. Lütfen GitHub'daki klasör ve dosya isimlerini kontrol edin.")
+    st.error(f"⚠️ Sistem Hatası: {e}")
 
 st.markdown("---")
 st.caption("Developed for EEE Graduation Project | Real-Time Dashboard")
