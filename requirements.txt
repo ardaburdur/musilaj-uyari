@@ -1,5 +1,6 @@
 streamlit
-pandas
 numpy
-scikit-learn
-requests
+opencv-python-headless
+rasterio
+matplotlib
+# Eğer yapay zeka modelini (.keras) de siteye eklersen buraya 'tensorflow' da yazmalısın.
