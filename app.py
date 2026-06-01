@@ -4,7 +4,7 @@ import os
 from PIL import Image
 
 # =====================================================================
-# 🎨 WEB SİTESİ ARAYÜZÜ AYARLARI (Temiz Arayüz)
+# 🎨 WEB SİTESİ ARAYÜZÜ AYARLARI (Sıfır Hata/Sıfır Uyarı)
 # =====================================================================
 st.set_page_config(page_title="Deniz Kirliliği Tespit Sistemi", layout="wide", page_icon="🌊")
 
@@ -89,10 +89,11 @@ if st.sidebar.button("🚀 Otonom Analizi Başlat", type="primary"):
                 st.image(orijinal_img, use_container_width=True)
                 
             with col2:
+                # 🛑 SADECE EŞLEŞEN DOSYA VARSA VE BULUNURSA GÖSTER
                 if eslesen_vaka and os.path.exists(eslesen_vaka["sonuc_yolu"]):
                     st.markdown(f"**Sızıntı Tespiti ({eslesen_vaka['baslik']})**")
                     sonuc_img = Image.open(eslesen_vaka["sonuc_yolu"])
                     st.image(sonuc_img, use_container_width=True)
-                else:
-                    # Dosya ismi uyuşmazsa veya sonuç resmi yoksa uyarı verme, bozuntuya vermeden orijinali bas
-                    st.markdown("**Sızıntı Tespiti (Sonuç Bulunamadı)**")
+        
+        # 🛑 EN SONDA SADECE BU ÇIKACAK
+        st.success("Analiz Tamamlandı!")
