@@ -1,6 +1,6 @@
 streamlit
 numpy
 opencv-python-headless
-pillow
+Pillow
 matplotlib
 # Eğer yapay zeka modelini (.keras) de siteye eklersen buraya 'tensorflow' da yazmalısın.
